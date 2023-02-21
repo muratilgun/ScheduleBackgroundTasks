@@ -1,4 +1,5 @@
 using ScheduleBackgroundTasks.ScheduleTask;
+using ScheduleBackgroundTasks.Services;
 
 namespace ScheduleBackgroundTasks;
 
@@ -10,8 +11,10 @@ public class Program
 
 
         builder.Services.AddControllers();
+        builder.Services.AddScoped<IReportGenerator, ReportGenerator>();
         builder.Services.AddSingleton<IHostedService,SampleTask1>();
         builder.Services.AddSingleton<IHostedService,SampleTask2>();
+        builder.Services.AddSingleton<IHostedService,SampleTask3>();
 
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
