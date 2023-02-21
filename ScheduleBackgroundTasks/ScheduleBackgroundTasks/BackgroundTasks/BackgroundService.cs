@@ -8,10 +8,8 @@ public abstract class BackgroundService : IHostedService
     public virtual Task StartAsync(CancellationToken cancellationToken)
     {
         _executingTask = ExecuteAsync(_cancellationTokenSource.Token);
-        if (_executingTask.IsCompleted)
-        {
-            return _executingTask;
-        }
+        if (_executingTask.IsCompleted) return _executingTask;
+
         return Task.CompletedTask;
     }
 
